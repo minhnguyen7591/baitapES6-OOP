@@ -1,0 +1,164 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>QLHV</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6 mx-auto">
+          <h3 class="display-4 text-center">
+            Quản Lý học viện nguyên cứu & giảng dạy
+          </h3>
+          <form id="formQLHV">
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="">Họ và tên : </label>
+                <input type="text" class="form-control" id="txtHoTen" />
+                <span id="spanHoTen" class="text-danger"></span>
+              </div>
+              <div class="col-6 form-group">
+                <label for="">Địa chỉ : </label>
+                <input type="text" class="form-control" id="txtĐiaChi" />
+                <span id="spanĐiaChi" class="text-danger"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="">Mã : </label>
+                <input type="text" class="form-control" id="txtMa" />
+                <span id="spanMa" class="text-danger"></span>
+              </div>
+              <div class="col-6 form-group">
+                <label for="">Email : </label>
+                <input type="text" class="form-control" id="txtEmail" />
+                <span id="spanEmail" class="text-danger"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="">Loại người dùng :</label>
+                <select name="" id="loaiND" class="form-control">
+                  <option>Học viên</option>
+                  <option>Giảng viên</option>
+                  <option>Khách hàng</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 form-group">
+                <label for="">Điểm toán : </label>
+                <input type="text" class="form-control" id="txtDiemToan" />
+                <span id="spanToan" class="text-danger"></span>
+              </div>
+              <div class="col-4 form-group">
+                <label for="">Điểm lý : </label>
+                <input type="text" class="form-control" id="txtDiemLy" />
+                <span id="spanLy" class="text-danger"></span>
+              </div>
+              <div class="col-4 form-group">
+                <label for="">Điểm hóa : </label>
+                <input type="text" class="form-control" id="txtDiemHoa" />
+                <span id="spanHoa" class="text-danger"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="">Số ngày làm : </label>
+                <input type="text" class="form-control" id="txtSoNgay" />
+                <span id="spanSoNgay" class="text-danger"></span>
+              </div>
+              <div class="col-6 form-group">
+                <label for="">Lương ngày : </label>
+                <input type="text" class="form-control" id="txtLuongNgay" />
+                <span id="spanLuongNgay" class="text-danger"></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 form-group">
+                <label for="">Tên công ty : </label>
+                <input type="text" class="form-control" id="txtTenCTy" />
+                <span id="spanTenCTy" class="text-danger"></span>
+              </div>
+              <div class="col-4 form-group">
+                <label for="">Trị giá hóa đơn : </label>
+                <input type="text" class="form-control" id="txtHoaDon" />
+                <span id="spanHoaDon" class="text-danger"></span>
+              </div>
+              <div class="col-4 form-group">
+                <label for="">Đánh Giá : </label>
+                <input type="text" class="form-control" id="txtDanhGia" />
+                <span id="spanDanhGia" class="text-danger"></span>
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <button
+                type="button"
+                onclick="themNguoiDung()"
+                class="btn btn-success"
+              >
+                Thêm Người dùng
+              </button>
+
+              <button
+                type="button"
+                onclick="xoaNguoiDung()"
+                class="btn btn-dark"
+              >
+                Xóa
+              </button>
+              <button type="button" onclick="capNhatND()" class="btn btn-info">
+                Cập Nhật
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-8 mx-auto">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Họ và tên</th>
+                <th>Địa chỉ</th>
+                <th>Mã</th>
+                <th>Email</th>
+                <th>Điểm Trung Bình</th>
+                <th>Lương</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tbodyNguoiDung"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
